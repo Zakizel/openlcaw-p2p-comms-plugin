@@ -11,6 +11,8 @@
   "files": [
     "core/",
     "skills/",
+    "cli.js",
+    "cli-runtime.js",
     "index.js",
     "plugin.js",
     "SKILL.md",

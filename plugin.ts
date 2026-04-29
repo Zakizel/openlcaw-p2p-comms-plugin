@@ -599,6 +599,25 @@ export default definePluginEntry({
     api.registerTool(createP2PForwardTool());
     api.registerTool(createP2PHandlerTool());
     api.registerTool(createP2PListAgentsTool());
+
+    // Register CLI commands
+    api.registerCli(
+      ({ program }) => {
+        // Lazy import to avoid loading CLI in non-CLI context
+        import("./cli.js").then(({ registerP2pCli }) => {
+          registerP2pCli(program);
+        });
+      },
+      {
+        descriptors: [
+          {
+            name: "p2p",
+            description: "P2P Agent Communications 管理命令",
+            hasSubcommands: true,
+          },
+        ],
+      },
+    );
   },
 });
 
