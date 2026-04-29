@@ -1,0 +1,40 @@
+{
+  "name": "@openclaw/p2p-comms",
+  "version": "1.0.0",
+  "description": "P2P agent communications plugin for OpenClaw",
+  "type": "module",
+  "main": "plugin.js",
+  "exports": {
+    ".": "./index.js",
+    "./plugin": "./plugin.js"
+  },
+  "files": [
+    "core/",
+    "skills/",
+    "index.js",
+    "plugin.js",
+    "SKILL.md",
+    "openclaw.plugin.json"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "tsdown": "^0.12.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.0"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.4.0"
+  },
+  "openclaw": {
+    "extensions": [
+      {
+        "entry": "plugin.js",
+        "channel": "stable"
+      }
+    ]
+  }
+}

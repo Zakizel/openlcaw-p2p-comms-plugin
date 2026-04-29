@@ -1,0 +1,40 @@
+{
+  "id": "p2p-comms",
+  "name": "P2P Agent Communications",
+  "description": "Enable direct agent-to-agent messaging without Gateway routing",
+  "version": "1.0.0",
+  "format": "openclaw",
+  "extensions": [
+    {
+      "entry": "plugin.js",
+      "channel": "stable"
+    }
+  ],
+  "skills": [
+    "./skills/p2p-forward"
+  ],
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "default": true,
+        "description": "Enable P2P message bus"
+      },
+      "messageQueuePollIntervalMs": {
+        "type": "number",
+        "default": 10,
+        "description": "Polling interval for message queue in milliseconds"
+      },
+      "callbackTimeoutMs": {
+        "type": "number",
+        "default": 30000,
+        "description": "Default timeout for message callbacks in milliseconds"
+      }
+    }
+  },
+  "contracts": [
+    "agent.lifecycle/p2p-register",
+    "agent.lifecycle/p2p-send"
+  ]
+}
