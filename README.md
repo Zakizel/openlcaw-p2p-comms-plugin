@@ -1,48 +1,42 @@
-# P2P Agent Communications Plugin
+# P2P Agent 通信插件
 
-Enable direct peer-to-peer messaging between agents without going through the Gateway.
+让 Agent 之间无需经过 Gateway 即可直接进行点对点消息传递。
 
-## Overview
+## 概述
 
-The P2P Comms plugin allows agents to communicate directly with each other through a local message bus. It supports:
+P2P Comms 插件允许 Agent 通过本地消息总线直接相互通信，支持：
 
-- **Chain-based forwarding** with `chainId` and `sourceAgentId` tracking
-- **Conversation threading** with parent-child relationships
-- **LLM-driven decisions** (reply, forward, process, end)
-- **Event-driven message handling** with per-agent queues
+- **链式转发** - 通过 `chainId` 和 `sourceAgentId` 追踪消息链路
+- **会话线程** - 支持父子会话关系
+- **LLM 驱动决策** - reply（回复）、forward（转发）、process（处理）、end（结束）
+- **事件驱动消息处理** - 每个 Agent 独立的消息队列
 
-## Requirements
+## 环境要求
 
 - OpenClaw Gateway 2026.4.0+
 - Node.js 22.12+
 
-## Installation
+## 安装
 
-### From GitHub
+### 从 GitHub 安装
 
 ```bash
-openclaw plugins install github:your-username/p2p-comms-plugin
+openclaw plugins install github:Zakizel/openlcaw-p2p-comms-plugin
 ```
 
-### From npm (when published)
+### 从源码安装
 
 ```bash
-openclaw plugins install @openclaw/p2p-comms
-```
-
-### From Source
-
-```bash
-git clone https://github.com/your-username/p2p-comms-plugin.git
-cd p2p-comms-plugin
+git clone https://github.com/Zakizel/openlcaw-p2p-comms-plugin.git
+cd openlcaw-p2p-comms-plugin
 npm install
 npm run build
 openclaw plugins install .
 ```
 
-## Configuration
+## 配置
 
-Add to your OpenClaw config:
+在 OpenClaw 配置文件中添加：
 
 ```json
 {
@@ -56,31 +50,31 @@ Add to your OpenClaw config:
 }
 ```
 
-Then restart the Gateway:
+然后重启 Gateway：
 
 ```bash
 openclaw gateway restart
 ```
 
-## Tools
+## 工具
 
 ### p2p_list_agents
 
-List all registered agents in the P2P message bus.
+列出 P2P 消息总线中所有已注册的 Agent。
 
 ### p2p_send_message
 
-Send a direct message to another agent.
+向另一个 Agent 发送直接消息。
 
 ### p2p_forward_message
 
-Forward a message while preserving chainId and sourceAgentId.
+在保留 chainId 和 sourceAgentId 的情况下转发消息。
 
 ### p2p_register_handler
 
-Register a handler for specific message types.
+为特定消息类型注册处理器。
 
-## Architecture
+## 架构
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -92,6 +86,6 @@ Register a handler for specific message types.
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## License
+## 许可证
 
 MIT
