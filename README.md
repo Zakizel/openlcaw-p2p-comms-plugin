@@ -100,6 +100,25 @@ openclaw p2p trace <chainId> # 追踪消息链路
 openclaw p2p test            # 运行测试场景
 ```
 
+## Skill
+
+插件已包含 `skills/p2p-forward/SKILL.md`，安装时会自动加载。
+
+如果新 Agent 找不到 skill，手动复制：
+
+```bash
+# 复制到全局 skills 目录（所有 Agent 都能用）
+cp skills/p2p-forward/SKILL.md ~/.openclaw/skills/
+
+# 或复制到特定 Agent 的目录
+cp skills/p2p-forward/SKILL.md ~/.openclaw/agents/<agent-id>/skills/
+```
+
+验证 skill 是否可用：
+```bash
+openclaw skills list
+```
+
 ## 卸载
 
 如果插件影响正常使用，按以下步骤卸载：
